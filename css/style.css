@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Oswald:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --near-black: #121212;
+  --panel: #181414;
+  --border: #2b2020;
+  --red: #d4131b;
+  --red-glow: #ff2a33;
+  --bone: #e8e2d8;
+  --grey: #9a9490;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  background-image:
+    radial-gradient(ellipse at top, rgba(212, 19, 27, 0.08), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, transparent 1px, transparent 2px);
+  color: var(--bone);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  letter-spacing: 0.02em;
+}
+
+a { color: var(--red-glow); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.metal-heading {
+  font-family: 'Metal Mania', cursive;
+  color: var(--bone);
+  text-shadow: 0 0 8px rgba(212,19,27,0.6), 0 0 20px rgba(212,19,27,0.3);
+  letter-spacing: 0.03em;
+}
+
+/* ---------------- NAV ---------------- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 6vw;
+  background: linear-gradient(180deg, var(--near-black), rgba(18,18,18,0.6));
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+}
+
+.site-nav .brand {
+  font-family: 'Metal Mania', cursive;
+  font-size: 1.6rem;
+  color: var(--red-glow);
+  text-shadow: 0 0 10px rgba(212,19,27,0.7);
+}
+
+.site-nav .links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.site-nav .links a {
+  color: var(--grey);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.site-nav .links a:hover,
+.site-nav .links a.active {
+  color: var(--bone);
+  border-color: var(--red);
+  text-decoration: none;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  text-align: center;
+  padding: 64px 6vw 40px;
+}
+
+.hero .logo {
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1;
+}
+
+.hero .subtitle {
+  margin-top: 14px;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.hero .subtitle strong { color: var(--bone); }
+
+/* ---------------- COUNTDOWN ---------------- */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 32px);
+  margin: 48px auto;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+
+.countdown .unit {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px clamp(12px, 3vw, 28px);
+  min-width: 90px;
+  box-shadow: 0 0 24px rgba(212,19,27,0.12), inset 0 0 20px rgba(0,0,0,0.6);
+}
+
+.countdown .unit .value {
+  font-family: 'Metal Mania', cursive;
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  color: var(--red-glow);
+  text-shadow: 0 0 14px rgba(255,42,51,0.6);
+  line-height: 1;
+}
+
+.countdown .unit .label {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--grey);
+}
+
+/* ---------------- SECTIONS / CARDS ---------------- */
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 6vw 60px;
+}
+
+.section-title {
+  font-family: 'Metal Mania', cursive;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--red-glow);
+  text-align: center;
+  margin-bottom: 32px;
+  text-shadow: 0 0 10px rgba(212,19,27,0.5);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  padding: 24px 26px;
+}
+
+.card h3 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  color: var(--red-glow);
+  margin-bottom: 14px;
+}
+
+.card p { color: var(--bone); line-height: 1.7; font-weight: 300; }
+.card p.muted { color: var(--grey); font-size: 0.9rem; margin-top: 6px; }
+
+.btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 22px;
+  border: 1px solid var(--red);
+  color: var(--bone);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  background: var(--red);
+  box-shadow: 0 0 18px rgba(212,19,27,0.5);
+  text-decoration: none;
+}
+
+/* ---------------- TABS (What to Take) ---------------- */
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--grey);
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover { color: var(--bone); border-color: var(--red); }
+
+.tab-btn.active {
+  color: var(--bone);
+  background: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 0 16px rgba(212,19,27,0.5);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.progress {
+  text-align: center;
+  font-family: 'Metal Mania', cursive;
+  color: var(--red-glow);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px rgba(212,19,27,0.5);
+}
+
+.checklist {
+  list-style: none;
+  columns: 2;
+  column-gap: 40px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.checklist li {
+  break-inside: avoid;
+  margin-bottom: 12px;
+}
+
+.checklist label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.checklist label:hover { background: rgba(212,19,27,0.08); }
+
+.checklist input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--red);
+  border-radius: 3px;
+  background: var(--near-black);
+  cursor: pointer;
+  position: relative;
+}
+
+.checklist input[type="checkbox"]:checked {
+  background: var(--red);
+  box-shadow: 0 0 10px rgba(212,19,27,0.6);
+}
+
+.checklist input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: -3px;
+  left: 3px;
+  color: var(--bone);
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.checklist span.done { color: var(--grey); text-decoration: line-through; }
+
+.empty-note {
+  text-align: center;
+  color: var(--grey);
+  font-style: italic;
+  padding: 30px 0;
+}
+
+/* ---------------- PREDICTIONS TABLE ---------------- */
+.pred-note {
+  text-align: center;
+  color: var(--grey);
+  max-width: 640px;
+  margin: 0 auto 34px;
+  line-height: 1.6;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+table.predictions {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  font-size: 0.92rem;
+}
+
+table.predictions thead th {
+  background: var(--panel);
+  color: var(--red-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--red);
+  text-align: left;
+  white-space: nowrap;
+}
+
+table.predictions td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--bone);
+  font-weight: 300;
+}
+
+table.predictions td.num {
+  color: var(--grey);
+  text-align: center;
+  width: 36px;
+}
+
+table.predictions tbody tr:hover { background: rgba(212,19,27,0.06); }
+
+td.pending { color: var(--grey); font-style: italic; }
+
+/* ---------------- FOOTER ---------------- */
+footer {
+  text-align: center;
+  padding: 30px 6vw 50px;
+  color: var(--grey);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 560px) {
+  .checklist { columns: 1; }
+}
