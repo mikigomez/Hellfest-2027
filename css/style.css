@@ -130,7 +130,8 @@ a:hover { text-decoration: underline; }
   height: auto;
   margin: 0 auto;
   display: block;
-  filter: drop-shadow(0 0 14px rgba(212,19,27,0.55)) drop-shadow(0 0 34px rgba(212,19,27,0.3));
+  filter: saturate(2.2) hue-rotate(-18deg) brightness(1.1)
+    drop-shadow(0 0 14px rgba(212,19,27,0.55)) drop-shadow(0 0 34px rgba(212,19,27,0.3));
 }
 
 .hero .subtitle {
