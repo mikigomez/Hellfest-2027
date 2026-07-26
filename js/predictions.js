@@ -1,29 +1,55 @@
 (function () {
-  const tbody = document.getElementById('predictions-body');
-  if (!tbody) return;
+  const tabsEl = document.getElementById('pred-tabs');
+  const panelsEl = document.getElementById('pred-panels');
+  if (!tabsEl || !panelsEl) return;
 
-  const order = ["Javi", "Rafel", "Miquel", "Julián", "Rudy"];
+  function renderPanel(person) {
+    const panel = document.createElement('div');
+    panel.className = 'tab-panel';
+    panel.id = 'pred-panel-' + person;
 
-  PREDICTIONS.forEach((row, i) => {
-    const tr = document.createElement('tr');
+    const picks = PREDICTIONS.map(row => row[person]);
+    const hasAny = picks.some(p => p && p.trim() !== '');
 
-    const numTd = document.createElement('td');
-    numTd.className = 'num';
-    numTd.textContent = i + 1;
-    tr.appendChild(numTd);
+    if (!hasAny) {
+      const note = document.createElement('div');
+      note.className = 'empty-note';
+      note.textContent = `${person} hasn't sent their predictions yet.`;
+      panel.appendChild(note);
+    } else {
+      const ol = document.createElement('ol');
+      ol.className = 'pred-list';
+      picks.forEach((pick) => {
+        const li = document.createElement('li');
+        if (pick && pick.trim() !== '') {
+          li.textContent = pick;
+        } else {
+          li.textContent = 'Pending...';
+          li.classList.add('pending');
+        }
+        ol.appendChild(li);
+      });
+      panel.appendChild(ol);
+    }
 
-    order.forEach((person) => {
-      const td = document.createElement('td');
-      const pick = row[person];
-      if (pick && pick.trim() !== '') {
-        td.textContent = pick;
-      } else {
-        td.textContent = 'Pending...';
-        td.classList.add('pending');
-      }
-      tr.appendChild(td);
-    });
+    panelsEl.appendChild(panel);
+  }
 
-    tbody.appendChild(tr);
+  function activate(person) {
+    document.querySelectorAll('#pred-tabs .tab-btn').forEach(b => b.classList.toggle('active', b.dataset.person === person));
+    document.querySelectorAll('#pred-panels .tab-panel').forEach(p => p.classList.toggle('active', p.id === 'pred-panel-' + person));
+  }
+
+  CREW.forEach((person) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn';
+    btn.type = 'button';
+    btn.textContent = person;
+    btn.dataset.person = person;
+    btn.addEventListener('click', () => activate(person));
+    tabsEl.appendChild(btn);
+    renderPanel(person);
   });
+
+  activate(CREW[0]);
 })();

@@ -45,7 +45,7 @@
     if (items.length === 0) {
       const note = document.createElement('div');
       note.className = 'empty-note';
-      note.textContent = `${person} hasn't sent a packing list yet — ask Miquel to add it.`;
+      note.textContent = `${person} hasn't sent a packing list yet — ask Miki to add it.`;
       panel.appendChild(note);
     } else {
       const ul = document.createElement('ul');
