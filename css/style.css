@@ -258,16 +258,18 @@ a:hover { text-decoration: underline; }
   text-shadow: 0 0 8px rgba(212,19,27,0.5);
 }
 
+.checklist-cols {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
 .checklist {
   list-style: none;
-  columns: 2;
-  column-gap: 40px;
-  max-width: 760px;
-  margin: 0 auto;
 }
 
 .checklist li {
-  break-inside: avoid;
   margin-bottom: 12px;
 }
 
@@ -328,18 +330,21 @@ a:hover { text-decoration: underline; }
   line-height: 1.6;
 }
 
+.pred-cols {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  counter-reset: pred;
+}
+
 .pred-list {
   list-style: none;
-  counter-reset: pred;
-  columns: 2;
-  column-gap: 40px;
-  max-width: 760px;
-  margin: 0 auto;
+  max-width: 480px;
 }
 
 .pred-list li {
   counter-increment: pred;
-  break-inside: avoid;
   display: flex;
   gap: 12px;
   align-items: baseline;
@@ -382,5 +387,5 @@ footer {
 }
 
 @media (max-width: 560px) {
-  .checklist { columns: 1; }
+  .checklist-cols, .pred-cols { flex-direction: column; align-items: center; gap: 0; }
 }

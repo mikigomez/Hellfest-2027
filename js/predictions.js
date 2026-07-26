@@ -17,19 +17,25 @@
       note.textContent = `${person} hasn't sent their predictions yet.`;
       panel.appendChild(note);
     } else {
-      const ol = document.createElement('ol');
-      ol.className = 'pred-list';
-      picks.forEach((pick) => {
-        const li = document.createElement('li');
-        if (pick && pick.trim() !== '') {
-          li.textContent = pick;
-        } else {
-          li.textContent = 'Pending...';
-          li.classList.add('pending');
-        }
-        ol.appendChild(li);
+      const cols = document.createElement('div');
+      cols.className = 'pred-cols';
+      const mid = Math.ceil(picks.length / 2);
+      [picks.slice(0, mid), picks.slice(mid)].forEach((colPicks) => {
+        const ol = document.createElement('ol');
+        ol.className = 'pred-list';
+        colPicks.forEach((pick) => {
+          const li = document.createElement('li');
+          if (pick && pick.trim() !== '') {
+            li.textContent = pick;
+          } else {
+            li.textContent = 'Pending...';
+            li.classList.add('pending');
+          }
+          ol.appendChild(li);
+        });
+        cols.appendChild(ol);
       });
-      panel.appendChild(ol);
+      panel.appendChild(cols);
     }
 
     panelsEl.appendChild(panel);

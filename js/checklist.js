@@ -48,32 +48,39 @@
       note.textContent = `${person} hasn't sent a packing list yet — ask Miki to add it.`;
       panel.appendChild(note);
     } else {
-      const ul = document.createElement('ul');
-      ul.className = 'checklist';
-      items.forEach((item, i) => {
-        const li = document.createElement('li');
-        const label = document.createElement('label');
-        const input = document.createElement('input');
-        input.type = 'checkbox';
-        input.checked = !!checked[i];
-        const span = document.createElement('span');
-        span.textContent = item;
-        if (input.checked) span.classList.add('done');
+      const cols = document.createElement('div');
+      cols.className = 'checklist-cols';
+      const mid = Math.ceil(items.length / 2);
+      [items.slice(0, mid), items.slice(mid)].forEach((colItems, colIndex) => {
+        const ul = document.createElement('ul');
+        ul.className = 'checklist';
+        colItems.forEach((item, idxInCol) => {
+          const i = colIndex === 0 ? idxInCol : mid + idxInCol;
+          const li = document.createElement('li');
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'checkbox';
+          input.checked = !!checked[i];
+          const span = document.createElement('span');
+          span.textContent = item;
+          if (input.checked) span.classList.add('done');
 
-        input.addEventListener('change', () => {
-          const c = loadChecked(person);
-          c[i] = input.checked;
-          saveChecked(person, c);
-          span.classList.toggle('done', input.checked);
-          updateProgress(person);
+          input.addEventListener('change', () => {
+            const c = loadChecked(person);
+            c[i] = input.checked;
+            saveChecked(person, c);
+            span.classList.toggle('done', input.checked);
+            updateProgress(person);
+          });
+
+          label.appendChild(input);
+          label.appendChild(span);
+          li.appendChild(label);
+          ul.appendChild(li);
         });
-
-        label.appendChild(input);
-        label.appendChild(span);
-        li.appendChild(label);
-        ul.appendChild(li);
+        cols.appendChild(ul);
       });
-      panel.appendChild(ul);
+      panel.appendChild(cols);
     }
 
     panelsEl.appendChild(panel);
