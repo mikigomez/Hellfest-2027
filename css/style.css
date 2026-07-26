@@ -348,27 +348,12 @@ a:hover { text-decoration: underline; }
 .pred-list li.pending { color: var(--grey); font-style: italic; }
 
 /* ---------------- CREW PHOTO ---------------- */
-.crew-photo {
-  max-width: 1000px;
-  margin: 0 auto 20px;
-  padding: 0 6vw;
-}
-
 .crew-photo img {
   width: 100%;
   display: block;
   border-radius: 6px;
   border: 1px solid var(--border);
   box-shadow: 0 0 40px rgba(212,19,27,0.18), 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.crew-photo .caption {
-  text-align: center;
-  margin-top: 14px;
-  color: var(--grey);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
 }
 
 /* ---------------- FOOTER ---------------- */
