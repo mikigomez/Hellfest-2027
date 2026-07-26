@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Oswald:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Eater&family=Metal+Mania&family=Oswald:wght@300;400;500;600;700&display=swap');
 
 :root {
   --black: #0a0a0a;
@@ -103,9 +103,34 @@ a:hover { text-decoration: underline; }
   padding: 64px 6vw 40px;
 }
 
+.hero .edition-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--red-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.8rem;
+  margin-bottom: 18px;
+}
+
+.hero .edition-tag::before,
+.hero .edition-tag::after {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: var(--red);
+  box-shadow: 0 0 6px rgba(212,19,27,0.6);
+}
+
 .hero .logo {
+  font-family: 'Eater', cursive;
   font-size: clamp(3rem, 10vw, 7rem);
   line-height: 1;
+  color: var(--red-glow);
+  text-shadow: 0 0 10px rgba(212,19,27,0.7), 0 0 32px rgba(212,19,27,0.4);
+  letter-spacing: 0.02em;
 }
 
 .hero .subtitle {
