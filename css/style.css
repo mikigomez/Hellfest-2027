@@ -398,25 +398,20 @@ a:hover { text-decoration: underline; }
 
 .carousel-arrow {
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--red);
-  background: var(--panel);
-  font-size: 1.4rem;
+  background: none;
+  border: none;
+  padding: 8px;
+  color: var(--red-glow);
+  font-size: 2.4rem;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-shadow: 0 0 8px rgba(212,19,27,0.6), 0 0 20px rgba(212,19,27,0.3);
   cursor: pointer;
-  filter: drop-shadow(0 0 4px rgba(212,19,27,0.7)) saturate(3);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: transform 0.2s, text-shadow 0.2s;
 }
 
 .carousel-arrow:hover {
-  background: rgba(212,19,27,0.15);
-  box-shadow: 0 0 14px rgba(212,19,27,0.5);
-  transform: scale(1.08);
+  transform: scale(1.15);
+  text-shadow: 0 0 12px rgba(212,19,27,0.8), 0 0 28px rgba(212,19,27,0.5);
 }
 
 /* ---------------- FOOTER ---------------- */
